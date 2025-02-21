@@ -15,15 +15,15 @@
     }
 </style>
 
-<div id="score">000000</div>
+<div id="score">100000</div>
 
 <script>
     let score = 100000; // Start from 100K
     function updateScore() {
         if (score < 500000000000) {
-            score += Math.floor(Math.random() * 1000000); // Random increase
+            score += 10; // Increase by 10 every second
         }
         document.getElementById("score").textContent = score.toString().padStart(6, '0');
     }
-    setInterval(updateScore, 100); // Adjust speed here
+    setInterval(updateScore, 1000); // Update every 1 second
 </script>
