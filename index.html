@@ -21,7 +21,7 @@
     let score = 100000; // Start from 100K
     function updateScore() {
         if (score < 500000000000) {
-            score += 10; // Increase by 10 every second
+            score += 1; // Increase by 10 every second
         }
         document.getElementById("score").textContent = score.toString().padStart(6, '0');
     }
