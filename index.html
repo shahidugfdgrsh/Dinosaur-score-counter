@@ -12,6 +12,7 @@
         font-family: 'Press Start 2P', cursive;
         font-size: 50px;
         color: white;
+        transition: color 0.1s ease-in-out;
     }
 </style>
 
@@ -19,13 +20,26 @@
 
 <script>
     let score = 100000; // Start from 100K
+    let isBlinking = false; // Prevent multiple blinks at the same time
 
     function updateScore() {
         score += 1; // Increase by 1 per frame (~60 times per second)
-        document.getElementById("score").textContent = score.toString().padStart(6, '0');
+        let scoreElement = document.getElementById("score");
+        scoreElement.textContent = score.toString().padStart(6, '0');
+
+        // Blink effect every 100 points
+        if (score % 100 === 0 && !isBlinking) {
+            isBlinking = true;
+            scoreElement.style.color = "black"; // Change to black for blink effect
+            setTimeout(() => {
+                scoreElement.style.color = "white"; // Back to white
+                isBlinking = false;
+            }, 100); // Blink duration (100ms)
+        }
+
         requestAnimationFrame(updateScore); // Run at ~60 FPS
     }
 
     requestAnimationFrame(updateScore); // Start updating the score
-            </script>
-            
+        </script>
+        
