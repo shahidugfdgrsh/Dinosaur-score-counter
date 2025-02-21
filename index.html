@@ -1,0 +1,29 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    body {
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    #score {
+        font-family: 'Press Start 2P', cursive;
+        font-size: 50px;
+        color: white;
+    }
+</style>
+
+<div id="score">000000</div>
+
+<script>
+    let score = 100000; // Start from 100K
+    function updateScore() {
+        if (score < 500000000000) {
+            score += Math.floor(Math.random() * 1000000); // Random increase
+        }
+        document.getElementById("score").textContent = score.toString().padStart(6, '0');
+    }
+    setInterval(updateScore, 100); // Adjust speed here
+</script>
