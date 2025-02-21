@@ -1,7 +1,7 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
     body {
-        background: black;
+        background: rgba(0, 0, 0, 0); /* Transparent background */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -19,11 +19,13 @@
 
 <script>
     let score = 100000; // Start from 100K
+
     function updateScore() {
-        if (score < 500000000000) {
-            score += 1; // Increase by 10 every second
-        }
+        score += 1; // Increase by 1 per frame (~60 times per second)
         document.getElementById("score").textContent = score.toString().padStart(6, '0');
+        requestAnimationFrame(updateScore); // Run at ~60 FPS
     }
-    setInterval(updateScore, 1000); // Update every 1 second
-</script>
+
+    requestAnimationFrame(updateScore); // Start updating the score
+            </script>
+            
